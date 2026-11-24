@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/venue.schema.json",
+  "title": "Event Seating Venue Fixture",
+  "type": "object",
+  "required": ["venueId", "name", "map", "priceTiers", "sections"],
+  "additionalProperties": true,
+  "properties": {
+    "venueId": { "type": "string" },
+    "name": { "type": "string" },
+    "map": {
+      "type": "object",
+      "required": ["width", "height"],
+      "additionalProperties": false,
+      "properties": {
+        "width": { "type": "number", "exclusiveMinimum": 0 },
+        "height": { "type": "number", "exclusiveMinimum": 0 }
+      }
+    },
+    "priceTiers": {
+      "type": "object",
+      "additionalProperties": false,
+      "patternProperties": {
+        "^[0-9]+$": {
+          "type": "object",
+          "required": ["label", "priceCents", "currency"],
+          "additionalProperties": false,
+          "properties": {
+            "label": { "type": "string" },
+            "priceCents": { "type": "integer", "minimum": 0 },
+            "currency": { "type": "string", "minLength": 3, "maxLength": 3 }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "label", "transform", "rows"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string" },
+          "label": { "type": "string" },
+          "transform": {
+            "type": "object",
+            "required": ["x", "y", "scale"],
+            "additionalProperties": false,
+            "properties": {
+              "x": { "type": "number" },
+              "y": { "type": "number" },
+              "scale": { "type": "number" }
+            }
+          },
+          "rows": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["index", "label", "seats"],
+              "additionalProperties": false,
+              "properties": {
+                "index": { "type": "integer", "minimum": 1 },
+                "label": { "type": "string" },
+                "seats": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": ["id", "col", "x", "y", "priceTier", "status"],
+                    "additionalProperties": false,
+                    "properties": {
+                      "id": { "type": "string" },
+                      "col": { "type": "integer", "minimum": 1 },
+                      "x": { "type": "number" },
+                      "y": { "type": "number" },
+                      "priceTier": { "type": "integer", "minimum": 1 },
+                      "status": {
+                        "type": "string",
+                        "enum": ["available", "reserved", "sold", "held"]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

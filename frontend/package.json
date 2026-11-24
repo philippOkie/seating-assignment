@@ -1,0 +1,26 @@
+{
+  "name": "frontend-seating-map-task-kit",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "generate:venues": "node scripts/generate-venues.mjs",
+    "validate:json": "node scripts/validate-venues.mjs",
+    "validate:venues": "node scripts/validate-venues.mjs",
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "npm run build && node --test tests/*.test.mjs"
+  },
+  "devDependencies": {
+    "typescript": "6.0.3",
+    "vite": "7.3.6",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "jsdom": "29.1.1"
+  },
+  "dependencies": {
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
+  }
+}

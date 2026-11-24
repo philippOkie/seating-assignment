@@ -1,0 +1,236 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: #f4f5f0;
+  color: #182720;
+  font:
+    16px/1.5 Inter,
+    Arial,
+    sans-serif;
+}
+header {
+  background: #152821;
+  color: white;
+}
+header > div,
+.wrap {
+  max-width: 1180px;
+  margin: auto;
+  padding: 16px 28px;
+}
+header > div {
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.mark {
+  background: #84e2bd;
+  color: #12251c;
+  padding: 1px 8px;
+  border-radius: 5px;
+}
+.title,
+.maphead,
+.detail,
+.subtotal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+}
+.title {
+  margin: 20px 0 24px;
+}
+h1,
+h2,
+p {
+  margin: 0;
+}
+h1 {
+  font-size: clamp(2rem, 5vw, 3.8rem);
+  line-height: 1.1;
+  letter-spacing: -0.055em;
+}
+h2 {
+  font-size: 1.2rem;
+}
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 2.3fr) minmax(235px, 1fr);
+  gap: 20px;
+}
+main {
+  display: grid;
+  gap: 16px;
+}
+.card,
+.mapcard {
+  border: 1px solid #d5dcd4;
+  background: white;
+  border-radius: 14px;
+  padding: 20px;
+}
+.mapcard {
+  padding: 0;
+  overflow: hidden;
+  background: #142730;
+  color: white;
+}
+.maphead,
+.legend {
+  padding: 14px 18px;
+}
+.maphead span {
+  font-size: 0.8rem;
+  color: #c9ddd9;
+}
+.arena {
+  position: relative;
+}
+.arena canvas {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.arena canvas:last-child {
+  position: absolute;
+  inset: 0;
+  cursor: crosshair;
+}
+.floor {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-transform: uppercase;
+  color: #aec7c8;
+  font-size: clamp(8px, 1.2vw, 13px);
+  letter-spacing: 0.15em;
+}
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  font-size: 0.8rem;
+}
+.legend span:before {
+  content: "";
+  display: inline-block;
+  background: #75e5c0;
+  border-radius: 50%;
+  width: 9px;
+  height: 9px;
+  margin-right: 6px;
+}
+.legend span:nth-child(2):before {
+  background: #677e89;
+}
+.legend span:last-child:before {
+  background: #ffb867;
+}
+.controls {
+  display: grid;
+  grid-template-columns: 1.5fr 0.7fr 1.3fr;
+  gap: 9px;
+  margin: 14px 0;
+}
+label {
+  display: grid;
+  font-weight: 600;
+  font-size: 0.8rem;
+  gap: 4px;
+}
+select,
+button {
+  font: inherit;
+  border-radius: 7px;
+  min-height: 40px;
+}
+select {
+  background: white;
+  color: #17281f;
+  border: 1px solid #a9b7ad;
+  padding: 5px;
+}
+.detail,
+.subtotal {
+  border-top: 1px solid #d6ddd8;
+  padding-top: 15px;
+}
+button {
+  border: 0;
+  background: #116447;
+  color: white;
+  padding: 6px 15px;
+  cursor: pointer;
+  font-weight: 650;
+}
+button:disabled {
+  background: #e0e6e0;
+  color: #55635b;
+  cursor: default;
+}
+:focus-visible {
+  outline: 3px solid #1763cb;
+  outline-offset: 3px;
+}
+small {
+  display: block;
+  color: #536559;
+}
+aside {
+  align-self: start;
+}
+aside p,
+.empty {
+  color: #526358;
+}
+.empty {
+  margin-top: 16px;
+}
+ul {
+  list-style: none;
+  padding: 0;
+}
+li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+}
+li span {
+  margin-left: auto;
+}
+.remove {
+  background: transparent;
+  color: #35483a;
+  font-size: 20px;
+}
+.subtotal {
+  font-size: 1.1rem;
+}
+@media (max-width: 740px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+  .title {
+    align-items: end;
+  }
+  .wrap,
+  header > div {
+    padding: 14px;
+  }
+  .card {
+    padding: 15px;
+  }
+  .controls {
+    grid-template-columns: 1.2fr 0.6fr 1.2fr;
+  }
+  select {
+    min-width: 0;
+    max-width: 100%;
+  }
+}
